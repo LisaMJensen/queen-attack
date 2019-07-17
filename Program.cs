@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using QueenAttack.Models;
 
-class QueenAttack
+public class Program
 {
   static void Main()
   {
@@ -21,7 +22,7 @@ class QueenAttack
     Console.WriteLine("Enter the vertical coordinate for this piece (1-8): ");
     int yCoordInputOtherPiece = int.Parse(Console.ReadLine());
 
-    bool result = determineAttack(xCoordInputQueen, yCoordInputQueen, xCoordInputOtherPiece, yCoordInputOtherPiece);
+    bool result = Queen.determineAttack(xCoordInputQueen, yCoordInputQueen, xCoordInputOtherPiece, yCoordInputOtherPiece);
 
     if (result == true)
     {
@@ -30,24 +31,6 @@ class QueenAttack
     else
     {
       Console.WriteLine("The queen cannot attack.");
-    }
-  }
-
-  static bool determineAttack(int xQueen, int yQueen, int xOther, int yOther)
-  {
-    // Queen can attack pieces in the same row or column
-    if (xQueen == xOther || yQueen == yOther)
-    {
-      return true;
-    }
-    // Queen can attack pieces that are diagonal from it
-    else if (Math.Abs(xQueen - xOther) == Math.Abs(yQueen - yOther))
-    {
-      return true;
-    }
-    else
-    {
-      return false;
     }
   }
 }
